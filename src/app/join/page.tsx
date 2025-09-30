@@ -490,6 +490,22 @@ export default function JoinPage() {
                 </div>
               </>
             )}
+            {formData.memberType === 'active' && (
+              <div className="mb-6">
+                <label htmlFor="skills" className="block text-sm font-medium text-gray-700 mb-2">
+                  Relevant Skills & Experience (Optional)
+                </label>
+                <textarea
+                  id="skills"
+                  name="skills"
+                  rows={3}
+                  value={formData.skills}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                  placeholder="What skills or experiences would you bring to the Team? (event planning, technical skills, leadership, etc.) - Optional"
+                />
+              </div>
+            )}
             {submitError && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <div className="flex items-start space-x-3">
