@@ -2,50 +2,66 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Users, Calendar, Target, Star, Award, Zap, Heart } from 'lucide-react'
 
+import { TeamMemberImage } from '@/components/team-member-image'
+
 // Core Team Members Data
 const coreTeam = [
   {
-    name: "Alex Johnson",
-    role: "Club President",
-    image: "/team/alex-johnson.jpg", // Replace with actual images
-    description: "Leading the vision and strategy of SkyBridge Club",
-    skills: ["Leadership", "Strategy", "Public Speaking"]
+    name: "Seif Eddine Boudjedir",
+    role: "Club Founder",
+    image: "/images/team/seif.JPG",
+    description: "Visionary founder who established SkyBridge Club to bridge technology and student innovation",
+    skills: ["Strategic Vision", "Leadership", "Project Initiation"]
   },
   {
-    name: "Sarah Chen",
-    role: "Events Director",
-    image: "/team/sarah-chen.jpg",
-    description: "Organizing amazing events and networking opportunities",
-    skills: ["Event Planning", "Networking", "Coordination"]
+    name: "Boutabett Abdelmoumene",
+    role: "Club Leader",
+    image: "/images/team/abdelmoumene.jpg",
+    description: "Leading the strategic vision and overall direction of SkyBridge Club",
+    skills: ["Strategic Planning", "Team Leadership", "Project Management"]
   },
   {
-    name: "Marcus Rodriguez",
-    role: "Tech Lead",
-    image: "/team/marcus-rodriguez.jpg",
-    description: "Driving our technical initiatives and workshops",
-    skills: ["Web Development", "AI/ML", "Technical Training"]
+    name: "Boukellal Lokmane",
+    role: "Co-Leader",
+    image: "/images/team/lokmane.jpg",
+    description: "Supporting club leadership and coordinating between departments",
+    skills: ["Coordination", "Team Management", "Strategic Support"]
   },
   {
-    name: "Emily Watson",
-    role: "Community Manager",
-    image: "/team/emily-watson.jpg",
-    description: "Building and nurturing our amazing community",
-    skills: ["Community Building", "Communication", "Mentorship"]
+    name: "Hamma Zakaria",
+    role: "Technical Department Leader",
+    image: "/images/team/zaki.jpg",
+    description: "Overseeing all technical projects and engineering initiatives",
+    skills: ["Technical Leadership", "Engineering", "Rocketry", "Robotics"]
   },
   {
-    name: "David Kim",
-    role: "Partnerships Manager",
-    image: "/team/david-kim.jpg",
-    description: "Connecting with industry partners and sponsors",
-    skills: ["Partnerships", "Business Development", "Negotiation"]
+    name: "Bengueddoudj Akram",
+    role: "Developer",
+    image: "/images/team/akram.jpg",
+    description: "Building digital solutions and technical platforms for the club",
+    skills: ["Web Development", "Software Engineering", "Technical Solutions"]
   },
   {
-    name: "Jessica Lee",
-    role: "Marketing Lead",
-    image: "/team/jessica-lee.jpg",
-    description: "Spreading the word about our mission and events",
-    skills: ["Digital Marketing", "Content Creation", "Branding"]
-  }
+    name: "Bekkai Louai",
+    role: "External Relations Manager",
+    image: "/images/team/louai.jpg",
+    description: "Managing partnerships and relationships with external organizations",
+    skills: ["Partnership Development", "Networking", "Communication"]
+  },
+  {
+    name: "Meziani Abderaouf",
+    role: "Graphic Designer",
+    image: "/images/team/abderaouf.jpeg",
+    description: "Creating visual identity and design assets for club materials",
+    skills: ["Graphic Design", "Brand Identity", "Visual Communication"]
+  },
+  {
+    name: "Korichi Jalil",
+    role: "Graphic Designer",
+    image: "/images/team/djalil.jpg",
+    description: "Designing engaging visual content and marketing materials",
+    skills: ["Digital Design", "Creative Solutions", "Visual Storytelling"]
+  },
 ]
 
 const features = [
@@ -78,6 +94,50 @@ const stats = [
   { number: '2', label: 'Strategic Partners' }
 ]
 
+function TeamMemberCard({ member }: { member: any }) {
+  return (
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+      <TeamMemberImage src={member.image} alt={member.name} />
+      {/* <div className="h-48 relative overflow-hidden">
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            // Fallback to gradient if image fails to load
+            e.currentTarget.style.display = 'none'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-300 to-blue-400 flex items-center justify-center">
+          <Users className="w-16 h-16 text-white opacity-80" />
+        </div>
+      </div> */}
+      {/* <div className="h-48 relative overflow-hidden bg-gradient-to-br from-sky-300 to-blue-400">
+        <div className="w-full h-full flex items-center justify-center">
+          <Users className="w-16 h-16 text-white opacity-80" />
+        </div>
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+      </div> */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+        <p className="text-sky-600 font-semibold mb-3">{member.role}</p>
+        <p className="text-gray-600 mb-4">{member.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {member.skills.map((skill: string, skillIndex: number) => (
+            <span 
+              key={skillIndex}
+              className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden">
@@ -88,7 +148,7 @@ export default function Home() {
           <div className="animate-float">
             <div className="inline-flex items-center space-x-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Star className="w-4 h-4" />
-              <span>Join 500+ students already members</span>
+              <span>Join ENPC's Newest Technology Hub</span>
             </div>
           </div>
           
@@ -183,30 +243,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreTeam.map((member, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div className="h-48 bg-gradient-to-r from-sky-400 to-blue-500 relative overflow-hidden">
-                  {/* Placeholder for team member photo */}
-                  <div className="w-full h-full bg-gradient-to-br from-sky-300 to-blue-400 flex items-center justify-center">
-                    <Users className="w-16 h-16 text-white opacity-80" />
-                  </div>
-                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-sky-600 font-semibold mb-3">{member.role}</p>
-                  <p className="text-gray-600 mb-4">{member.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {member.skills.map((skill, skillIndex) => (
-                      <span 
-                        key={skillIndex}
-                        className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <TeamMemberCard key={index} member={member} />
             ))}
           </div>
 

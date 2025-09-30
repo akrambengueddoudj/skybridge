@@ -3,7 +3,7 @@ import { Users, Target, History, Award } from 'lucide-react'
 export default function AboutPage() {
    const stats = [
     { number: '2025', label: 'Founded' },
-    { number: '2', label: 'Academic Departments' },
+    { number: '2', label: 'Academic Partners' },
     { number: 'ENPC', label: 'Institution' },
     { number: 'Coming Soon', label: 'First Events' }
   ]

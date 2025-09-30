@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { Check, Users, Award, Zap, Star, Heart, Target, Bell, Lightbulb, Crown } from 'lucide-react'
 
+import { SuccessMessage } from '@/components/success-message'
+
 const memberTypes = [
   {
     name: "Active Member",
@@ -81,34 +83,117 @@ export default function JoinPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Here you would integrate with Supabase
-    console.log('Form submitted:', formData)
-    
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
-      alert(`Application submitted successfully! We'll review your ${formData.memberType === 'active' ? 'membership' : 'core team application'} and get back to you soon.`)
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        studentId: '',
-        major: '',
-        year: '',
-        interests: '',
-        memberType: 'active',
-        skills: '',
-        motivation: ''
-      })
-    } catch (error) {
-      alert('There was an error submitting your application. Please try again.')
-    } finally {
-      setIsSubmitting(false)
+  const [submitError, setSubmitError] = useState('')
+
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+
+  const validateForm = () => {
+    if (!formData.firstName.trim()) {
+      setSubmitError('First name is required')
+      return false
     }
+    if (!formData.lastName.trim()) {
+      setSubmitError('Last name is required')
+      return false
+    }
+    if (!formData.email.trim()) {
+      setSubmitError('Email is required')
+      return false
+    }
+    if (!formData.major.trim()) {
+      setSubmitError('Major is required')
+      return false
+    }
+    if (!formData.year) {
+      setSubmitError('Academic year is required')
+      return false
+    }
+    if (!formData.interests.trim()) {
+      setSubmitError('Career interests are required')
+      return false
+    }
+    if (formData.memberType === 'core' && !formData.skills.trim()) {
+      setSubmitError('Please describe your skills for the Core Team application')
+      return false
+    }
+    if (formData.memberType === 'core' && !formData.motivation.trim()) {
+      setSubmitError('Please explain your motivation for joining the Core Team')
+      return false
+    }
+    
+    setSubmitError('')
+    return true
   }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        console.log('Submitting form with data...')
+        
+        if (!validateForm()) {
+        return
+        }
+        console.log('2')
+        
+        setIsSubmitting(true)
+        setSubmitError('')
+        
+        try {
+        const response = await fetch('/api/members', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            studentId: formData.studentId,
+            major: formData.major,
+            year: formData.year,
+            interests: formData.interests,
+            memberType: formData.memberType,
+            skills: formData.skills,
+            motivation: formData.motivation
+            }),
+        })
+        console.log('3')
+        const result = await response.json()
+        console.log('4')
+
+        if (!response.ok) {
+            // Use our error handler for API errors
+            setSubmitError(result.error || { message: result.error })
+            return
+            // const userMessage = handleSupabaseError(result.error || { message: result.error })
+            // throw new Error(userMessage)
+        }
+
+        // Success - show success message
+        setSubmitError('')
+        setSuccessMessage(`🎉 Application submitted successfully! We'll review your ${formData.memberType === 'active' ? 'membership' : 'core team application'} and get back to you soon.`)
+        setShowSuccess(true)
+
+        // Reset form
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            studentId: '',
+            major: '',
+            year: '',
+            interests: '',
+            memberType: 'active',
+            skills: '',
+            motivation: ''
+        })
+        } catch (error) {
+        console.error('Error submitting form:', error)
+        setSubmitError(error instanceof Error ? error.message : 'There was an error submitting your application. Please try again.')
+        } finally {
+        setIsSubmitting(false)
+        }
+    }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -116,9 +201,15 @@ export default function JoinPage() {
       [e.target.name]: e.target.value
     }))
   }
-
+    
   return (
     <div className="pt-16 pb-20">
+      {showSuccess && (
+        <SuccessMessage 
+            message={successMessage}
+            onClose={() => setShowSuccess(false)}
+        />
+      )}
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-sky-50 to-blue-100 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -399,13 +490,28 @@ export default function JoinPage() {
                 </div>
               </>
             )}
-
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-start space-x-3">
+                  <div className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0">⚠️</div>
+                  <div>
+                    <p className="text-red-800 font-medium mb-1">Unable to submit application</p>
+                    <p className="text-red-700 text-sm">{submitError}</p>
+                  </div>
+                </div>
+              </div>
+            )}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white py-4 px-6 rounded-lg hover:from-sky-600 hover:to-blue-700 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white py-4 px-6 rounded-lg hover:from-sky-600 hover:to-blue-700 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
-              {isSubmitting ? 'Submitting...' : (
+              {isSubmitting ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Submitting...
+                </>
+              ) : (
                 formData.memberType === 'core' ? 'Submit Core Team Application' : 'Become an Active Member'
               )}
             </button>

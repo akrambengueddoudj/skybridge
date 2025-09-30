@@ -2,97 +2,37 @@ import { Calendar, MapPin, Clock, Users, Image as ImageIcon } from 'lucide-react
 import Image from 'next/image'
 
 // Mock data with images
+// Mock data with images
 const events = [
   {
     id: 1,
-    title: "Tech Career Fair 2024",
-    date: "2024-03-15",
-    time: "10:00 AM - 3:00 PM",
-    location: "Student Union Building",
-    description: "Connect with top tech companies and discover internship opportunities. Bring your resume! Meet recruiters from Google, Microsoft, Amazon, and more.",
-    attendees: 120,
-    image: "/events/tech-fair-2024.jpg", // Replace with actual event images
-    type: "career",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Resume Workshop & Review",
-    date: "2024-03-20",
-    time: "2:00 PM - 4:00 PM",
-    location: "Library Room 301",
-    description: "Learn how to craft the perfect resume from industry professionals. Get personalized feedback and tips to make your resume stand out.",
-    attendees: 45,
-    image: "/events/resume-workshop.jpg",
+    title: "CIAA 2025 Rocketry Project Launch",
+    date: "To be Announced",
+    time: "To be Announced",
+    location: "To be Announced",
+    description: "Kickoff meeting for our ambitious rocketry project! Join us as we begin designing and building model rockets to represent ENPC at the CIAA 2025 competition in Blida. No prior experience required - we'll teach you everything about aerodynamics, propulsion, and rocket design.",
+    attendees: "/",
+    image: "/events/rocketry-launch.jpg",
     type: "workshop",
-    featured: false
-  },
-  {
-    id: 3,
-    title: "Industry Networking Mixer",
-    date: "2024-03-25",
-    time: "6:00 PM - 8:00 PM",
-    location: "Campus Center Ballroom",
-    description: "Casual networking event with alumni and professionals from various industries. Perfect for making connections in a relaxed atmosphere.",
-    attendees: 80,
-    image: "/events/networking-mixer.jpg",
-    type: "networking",
     featured: true
-  },
-  {
-    id: 4,
-    title: "AI & Machine Learning Panel",
-    date: "2024-04-05",
-    time: "3:00 PM - 5:00 PM",
-    location: "Engineering Building Auditorium",
-    description: "Panel discussion with experts in AI and machine learning. Learn about the latest trends and career opportunities in this rapidly growing field.",
-    attendees: 95,
-    image: "/events/ai-panel.jpg",
-    type: "panel",
-    featured: false
-  },
-  {
-    id: 5,
-    title: "Startup Pitch Competition",
-    date: "2024-04-12",
-    time: "1:00 PM - 5:00 PM",
-    location: "Business School Forum",
-    description: "Watch students pitch their innovative startup ideas to a panel of investors. Great opportunity for aspiring entrepreneurs!",
-    attendees: 150,
-    image: "/events/pitch-competition.jpg",
-    type: "competition",
-    featured: true
-  },
-  {
-    id: 6,
-    title: "Web Development Bootcamp",
-    date: "2024-04-18",
-    time: "9:00 AM - 4:00 PM",
-    location: "Computer Lab 204",
-    description: "Full-day intensive workshop covering modern web development technologies. Perfect for beginners and intermediate developers.",
-    attendees: 60,
-    image: "/events/web-dev-bootcamp.jpg",
-    type: "workshop",
-    featured: false
   }
 ]
 
 const pastEvents = [
   {
-    id: 7,
-    title: "Startup Pitch Competition",
-    date: "2024-02-10",
-    description: "Students pitched their startup ideas to a panel of investors. Over $5,000 in prizes awarded!",
-    winners: ["Team Innovate", "TechVisionaries", "EcoSolutions"],
-    image: "/events/past-pitch.jpg"
-  },
-  {
-    id: 8,
-    title: "Mock Interview Session",
-    date: "2024-02-18",
-    description: "Practice interviews with HR professionals from leading companies. Participants received valuable feedback.",
+    id: 4,
+    title: "SkyBridge Club Grand Opening",
+    date: "2025-10-01",
+    description: "Historic launch of SkyBridge Club! We officially opened our doors to welcome the ENPC community. The event featured presentations about our vision, technology demonstrations, and networking with founding members and professors.",
     winners: [],
-    image: "/events/past-interviews.jpg"
+    image: "/images/events/open_day.jpg",
+    attendees: '#',
+    highlights: [
+      "Official club inauguration",
+      "Founding team introductions", 
+      "Technology demonstrations",
+      "Networking session with professors"
+    ]
   }
 ]
 
@@ -110,17 +50,11 @@ function EventCard({ event }: { event: any }) {
 
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-      <div className="h-48 relative overflow-hidden">
-        {/* Event Image */}
-        <div className="w-full h-full bg-gradient-to-br from-sky-300 to-blue-400 flex items-center justify-center">
-          <ImageIcon className="w-12 h-12 text-white opacity-80" />
+      <div className="h-48 relative overflow-hidden bg-gradient-to-br from-sky-400 to-blue-500">
+        {/* Event image with gradient background as fallback */}
+        <div className="w-full h-full flex items-center justify-center">
+          <Calendar className="w-12 h-12 text-white opacity-80" />
         </div>
-        {/* <Image
-          src={event.image}
-          alt={event.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-        /> */}
         
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
@@ -251,13 +185,22 @@ export default function EventsPage() {
                     {new Date(event.date).toLocaleDateString()}
                   </span>
                 </div>
+                <div className="h-48 bg-gradient-to-br from-sky-300 to-blue-400 rounded-lg mb-4 flex items-center justify-center">
+                  <Calendar className="w-12 h-12 text-white opacity-80" />
+                </div>
                 <p className="text-gray-600 mb-4">{event.description}</p>
-                {event.winners.length > 0 && (
+                {event.attendees && (
+                  <div className="flex items-center text-gray-600 mb-3">
+                    <Users className="w-4 h-4 mr-2" />
+                    <span className="text-sm">{event.attendees} attendees</span>
+                  </div>
+                )}
+                {event.highlights && event.highlights.length > 0 && (
                   <div className="bg-sky-50 rounded-lg p-4 border border-sky-100">
-                    <h4 className="font-semibold text-sky-800 mb-2">🏆 Winners:</h4>
-                    <ul className="list-disc list-inside text-sky-700">
-                      {event.winners.map((winner, index) => (
-                        <li key={index}>{winner}</li>
+                    <h4 className="font-semibold text-sky-800 mb-2">✨ Event Highlights:</h4>
+                    <ul className="list-disc list-inside text-sky-700 space-y-1">
+                      {event.highlights.map((highlight, index) => (
+                        <li key={index} className="text-sm">{highlight}</li>
                       ))}
                     </ul>
                   </div>

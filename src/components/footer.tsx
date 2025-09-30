@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Facebook, Twitter, Instagram, Mail } from 'lucide-react'
 
 export function Footer() {
@@ -8,8 +9,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-sky-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SB</span>
+              <div className="w-10 h-10 relative">
+                <Image
+                  src="/images/logo/logo1.png" // Replace with your logo path
+                  alt="SkyBridge Club Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain rounded-full overflow-hidden"
+                />
               </div>
               <span className="font-bold text-xl">SkyBridgeClub</span>
             </Link>

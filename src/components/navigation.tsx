@@ -25,11 +25,11 @@ export function Navigation() {
               {/* Replace with your actual logo path */}
               <div className="w-10 h-10 relative">
                 <Image
-                  src="/logo.png" // Replace with your logo path
+                  src="/images/logo/logo1.png" // Replace with your logo path
                   alt="SkyBridge Club Logo"
                   width={40}
                   height={40}
-                  className="object-contain"
+                  className="object-contain rounded-full overflow-hidden"
                 />
               </div>
               <span className="font-bold text-xl bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
