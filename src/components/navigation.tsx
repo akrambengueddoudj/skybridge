@@ -33,7 +33,7 @@ export function Navigation() {
                 />
               </div>
               <span className="font-bold text-xl bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
-                SkyBridgeClub
+                SkyBridge Club
               </span>
             </Link>
           </div>

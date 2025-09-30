@@ -8,37 +8,37 @@ const contactInfo = [
     icon: Mail,
     title: "Email Us",
     description: "We'll respond quickly",
-    details: "contact@skybridgeclub.org",
-    link: "mailto:contact@skybridgeclub.org"
+    details: "skybridge.enpc@gmail.com",
+    link: "mailto:skybridge.enpc@gmail.com"
   },
   {
     icon: Phone,
     title: "Call Us",
-    description: "Mon-Fri from 9am to 5pm",
-    details: "+1 (555) 123-4567",
-    link: "tel:+15551234567"
+    description: "Prefered from 9am to 8pm",
+    details: "+213 655 784 664",
+    link: "tel:+213655784664"
   },
   {
     icon: MapPin,
     title: "Visit Us",
     description: "Stop by our office",
-    details: "Student Union Building, Room 205",
+    details: "National Polytechnic School of Constantine, Algeria",
     link: "#"
   },
   {
     icon: Clock,
     title: "Office Hours",
     description: "Come meet with us",
-    details: "Mon-Thu: 10AM-4PM",
+    details: "Sun-Thu: 11AM-4PM",
     link: "#"
   }
 ]
 
 const socialLinks = [
-  { name: 'Facebook', url: '#', icon: '📘' },
-  { name: 'Twitter', url: '#', icon: '🐦' },
-  { name: 'Instagram', url: '#', icon: '📷' },
-  { name: 'LinkedIn', url: '#', icon: '💼' }
+  { name: 'Facebook', url: 'https://www.facebook.com/Club.SkyBridge', icon: '📘' },
+  // { name: 'Twitter', url: '#', icon: '🐦' },
+  { name: 'Instagram', url: 'https://www.instagram.com/skybridge.club/', icon: '📷' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/skybridge-club', icon: '💼' }
 ]
 
 export default function ContactPage() {

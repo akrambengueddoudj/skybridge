@@ -413,11 +413,13 @@ export default function JoinPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
                 >
                   <option value="">Select your year</option>
-                  <option value="freshman">Freshman</option>
-                  <option value="sophomore">Sophomore</option>
-                  <option value="junior">Junior</option>
-                  <option value="senior">Senior</option>
-                  <option value="graduate">Graduate</option>
+                  <option value="prepa1">1st year preparatory class</option>
+                  <option value="prepa2">2nd year preparatory class</option>
+                  <option value="higher3">3rd year higher class</option>
+                  <option value="higher4">4th year higher class</option>
+                  <option value="higher5">5th year higher class</option>
+                  <option value="graduate">ENPC Graduated</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
             </div>
