@@ -382,7 +382,7 @@ export default function AskSpeakerPage({
         </div>
       </section>
 
-      {/* Recent Questions Preview (Optional) */}
+      {/* Recent Questions Preview (Optional)
       <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Recently Asked Questions</h2>
@@ -401,7 +401,7 @@ export default function AskSpeakerPage({
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Social Media Notice */}
       <section className="py-8 bg-gradient-to-r from-purple-50 to-pink-50">
