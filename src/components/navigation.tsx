@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Users, Calendar, Mail, Info, Home, HelpCircle } from 'lucide-react'
+import { Menu, X, Users, Calendar, Mail, Info, Home, HelpCircle, Mic } from 'lucide-react'
 
 const navigation = [
   { name: 'Home', href: '/', icon: Home },
@@ -12,6 +12,7 @@ const navigation = [
   { name: 'Join', href: '/join', icon: Users },
   { name: 'Contact', href: '/contact', icon: Mail },
   { name: 'Questions', href: '/questions', icon: HelpCircle },
+  { name: 'Ask the Speaker', href: '/ask-speaker', icon: Mic },
 ]
 
 export function Navigation() {

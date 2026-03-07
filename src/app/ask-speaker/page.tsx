@@ -12,16 +12,16 @@ interface AskSpeakerPageProps {
 }
 
 export default function AskSpeakerPage({ 
-  eventName = "AI Revolution 2024",
-  eventDate = "March 15, 2024",
-  speakerName = "Dr. Sarah Chen"
+  eventName = "EXPI-Day 2026",
+  eventDate = "March 8-9, 2024",
+  speakerName = "Our Speakers"
 }: AskSpeakerPageProps) {
   const [formData, setFormData] = useState({
     username: '',
     useremail: '',
     question: '',
     questionTopic: '',
-    canSharePublicly: false
+    canSharePublicly: true
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -214,7 +214,7 @@ export default function AskSpeakerPage({
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-xl">{speakerName}</h3>
-                  <p className="text-blue-100">Keynote Speaker • {eventName}</p>
+                  <p className="text-blue-100">Speaker • {eventName}</p>
                 </div>
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function AskSpeakerPage({
                 </div>
               </div>
 
-              {/* Question Topic (Optional) */}
+              {/* Question Topic (Optional)
               <div className="mb-6">
                 <label htmlFor="questionTopic" className="block text-sm font-medium text-gray-700 mb-2">
                   Question Topic (Optional)
@@ -277,7 +277,7 @@ export default function AskSpeakerPage({
                     <option key={topic} value={topic}>{topic}</option>
                   ))}
                 </select>
-              </div>
+              </div> */}
 
               {/* Question */}
               <div className="mb-6">
