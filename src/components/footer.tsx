@@ -40,16 +40,13 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/Club.SkyBridge" className="text-gray-300 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/skybridge.club/" className="text-gray-300 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="mailto:skybridge.enpc@gmail.com" className="text-gray-300 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>

@@ -17,14 +17,13 @@ export default function SharePage({
   isPostEvent = false 
 }: SharePageProps) {
   const [formData, setFormData] = useState({
-    username: '',
-    useremail: '',
-    answer1: '',
-    answer2: '',
-    answer3: '',
-    answer4: '',
-    answer5: ''
-  })
+  username: '',
+  useremail: '',
+  answer1: '', answer2: '', answer3: '', answer4: '', answer5: '',
+  answer6: '', answer7: '', answer8: '', answer9: '', answer10: '',
+  answer11: '', answer12: '', answer13: '', answer14: '', answer15: '',
+  answer16: '', answer17: '', answer18: '', answer19: '', answer20: ''
+})
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -55,128 +54,205 @@ export default function SharePage({
   const config = isPostEvent ? pageConfig.post : pageConfig.pre
 
   const questions = [
-    {
-      id: 1,
-      question: "What's your current understanding of AI and its impact on industries?",
-      placeholder: "Share your thoughts on how AI is changing the world...",
-      name: "answer1"
-    },
-    {
-      id: 2,
-      question: "Which AI skill or concept do you most want to learn about today?",
-      placeholder: "Machine learning, prompt engineering, ethics, applications...",
-      name: "answer2"
-    },
-    {
-      id: 3,
-      question: "What's the biggest challenge you think companies face when adopting AI?",
-      placeholder: "Share your perspective on implementation challenges...",
-      name: "answer3"
-    },
-    {
-      id: 4,
-      question: "If you could create an AI solution for any problem, what would it be?",
-      placeholder: "Dream big - what would you build?",
-      name: "answer4"
-    },
-    {
-      id: 5,
-      question: "What does 'being AI-ready' mean to you in your future career?",
-      placeholder: "How do you see AI shaping your professional journey?",
-      name: "answer5"
-    }
-  ]
+  {
+    id: 1,
+    question: "What's your current understanding of AI and its impact on industries?",
+    placeholder: "Share your thoughts on how AI is changing the world...",
+    name: "answer1"
+  },
+  {
+    id: 2,
+    question: "Which AI skill or concept do you most want to learn about today?",
+    placeholder: "Machine learning, prompt engineering, ethics, applications...",
+    name: "answer2"
+  },
+  {
+    id: 3,
+    question: "What's the biggest challenge you think companies face when adopting AI?",
+    placeholder: "Share your perspective on implementation challenges...",
+    name: "answer3"
+  },
+  {
+    id: 4,
+    question: "If you could create an AI solution for any problem, what would it be?",
+    placeholder: "Dream big - what would you build?",
+    name: "answer4"
+  },
+  {
+    id: 5,
+    question: "What does 'being AI-ready' mean to you in your future career?",
+    placeholder: "How do you see AI shaping your professional journey?",
+    name: "answer5"
+  },
+  {
+    id: 6,
+    question: "How do you think AI will transform your specific field of study?",
+    placeholder: "Consider your major or career path...",
+    name: "answer6"
+  },
+  {
+    id: 7,
+    question: "What ethical concerns about AI are most important to you?",
+    placeholder: "Privacy, bias, job displacement, regulation...",
+    name: "answer7"
+  },
+  {
+    id: 8,
+    question: "Which company or product do you think is leading in AI innovation?",
+    placeholder: "And why do they stand out to you?",
+    name: "answer8"
+  },
+  {
+    id: 9,
+    question: "What AI tool or application do you use most frequently?",
+    placeholder: "ChatGPT, Copilot, Midjourney, etc.",
+    name: "answer9"
+  },
+  {
+    id: 10,
+    question: "How do you stay updated on AI developments?",
+    placeholder: "Newsletters, podcasts, courses, LinkedIn...",
+    name: "answer10"
+  },
+  {
+    id: 11,
+    question: "What AI concept do you find most difficult to understand?",
+    placeholder: "Be honest - we're all learning!",
+    name: "answer11"
+  },
+  {
+    id: 12,
+    question: "How do you think AI will impact job markets in the next 5 years?",
+    placeholder: "New roles, displaced jobs, transformed industries...",
+    name: "answer12"
+  },
+  {
+    id: 13,
+    question: "What would you ask an AI researcher if you had 5 minutes with them?",
+    placeholder: "Your burning questions about AI...",
+    name: "answer13"
+  },
+  {
+    id: 14,
+    question: "How can students best prepare for an AI-driven future?",
+    placeholder: "Skills to learn, habits to build...",
+    name: "answer14"
+  },
+  {
+    id: 15,
+    question: "What AI project would you like to build or contribute to?",
+    placeholder: "Describe your ideal project...",
+    name: "answer15"
+  },
+  {
+    id: 16,
+    question: "How do you think AI will change education and learning?",
+    placeholder: "Personalized learning, tutoring, assessment...",
+    name: "answer16"
+  },
+  {
+    id: 17,
+    question: "What's the most exciting AI breakthrough you've heard about recently?",
+    placeholder: "Share something that amazed you...",
+    name: "answer17"
+  },
+  {
+    id: 18,
+    question: "How do you think AI can help solve global challenges?",
+    placeholder: "Climate change, healthcare, poverty, etc.",
+    name: "answer18"
+  },
+  {
+    id: 19,
+    question: "What AI-related topic would you like to see a workshop on?",
+    placeholder: "Help us plan future events!",
+    name: "answer19"
+  },
+  {
+    id: 20,
+    question: "Where do you see yourself in relation to AI 5 years from now?",
+    placeholder: "User, builder, researcher, leader, etc.",
+    name: "answer20"
+  }
+]
 
   const validateForm = () => {
-    if (!formData.username.trim()) {
-      setSubmitError('Display name is required')
-      return false
-    }
-    if (!formData.useremail.trim()) {
-      setSubmitError('Email address is required')
-      return false
-    }
-    if (!formData.answer1.trim()) {
-      setSubmitError('Please answer question 1')
-      return false
-    }
-    if (!formData.answer2.trim()) {
-      setSubmitError('Please answer question 2')
-      return false
-    }
-    if (!formData.answer3.trim()) {
-      setSubmitError('Please answer question 3')
-      return false
-    }
-    if (!formData.answer4.trim()) {
-      setSubmitError('Please answer question 4')
-      return false
-    }
-    if (!formData.answer5.trim()) {
-      setSubmitError('Please answer question 5')
-      return false
-    }
-    
-    setSubmitError('')
-    return true
+  if (!formData.username.trim()) {
+    setSubmitError('Display name is required')
+    return false
   }
+  if (!formData.useremail.trim()) {
+    setSubmitError('Email address is required')
+    return false
+  }
+  
+  // Check all 20 answers
+  for (let i = 1; i <= 20; i++) {
+    if (!formData[`answer${i}` as keyof typeof formData]?.trim()) {
+      setSubmitError(`Please answer question ${i}`)
+      return false
+    }
+  }
+  
+  setSubmitError('')
+  return true
+}
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    if (!validateForm()) {
+  e.preventDefault()
+  
+  if (!validateForm()) {
+    return
+  }
+  
+  setIsSubmitting(true)
+  setSubmitError('')
+  
+  try {
+    // Add event type to the data
+    const submitData = {
+      ...formData,
+      eventName: "AI Revolution 2024", // or pass as prop
+      eventDate: "March 15, 2024", // or pass as prop
+      responseType: isPostEvent ? 'post' : 'pre',
+      submittedAt: new Date().toISOString()
+    }
+
+    const response = await fetch('/api/questions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(submitData),
+    })
+
+    const result = await response.json()
+
+    if (!response.ok) {
+      setSubmitError(result.error || 'There was an error submitting your answers. Please try again.')
       return
     }
-    
-    setIsSubmitting(true)
+
     setSubmitError('')
-    
-    try {
-      // Add event type to the data
-      const submitData = {
-        ...formData,
-        eventName,
-        eventDate,
-        responseType: isPostEvent ? 'post' : 'pre',
-        submittedAt: new Date().toISOString()
-      }
+    setSuccessMessage(result.message || config.successMessage)
+    setShowSuccess(true)
 
-      const response = await fetch('/api/shares', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submitData),
-      })
-
-      const result = await response.json()
-
-      if (!response.ok) {
-        setSubmitError(result.error || 'There was an error submitting your answers. Please try again.')
-        return
-      }
-
-      setSubmitError('')
-      setSuccessMessage(config.successMessage)
-      setShowSuccess(true)
-
-      // Reset form
-      setFormData({
-        username: '',
-        useremail: '',
-        answer1: '',
-        answer2: '',
-        answer3: '',
-        answer4: '',
-        answer5: ''
-      })
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitError('There was an error submitting your answers. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
+    // Reset form
+    setFormData({
+      username: '',
+      useremail: '',
+      answer1: '', answer2: '', answer3: '', answer4: '', answer5: '',
+      answer6: '', answer7: '', answer8: '', answer9: '', answer10: '',
+      answer11: '', answer12: '', answer13: '', answer14: '', answer15: '',
+      answer16: '', answer17: '', answer18: '', answer19: '', answer20: ''
+    })
+  } catch (error) {
+    console.error('Error submitting form:', error)
+    setSubmitError('There was an error submitting your answers. Please try again.')
+  } finally {
+    setIsSubmitting(false)
   }
+}
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
