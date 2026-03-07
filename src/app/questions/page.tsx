@@ -14,7 +14,7 @@ interface SharePageProps {
 export default function SharePage({ 
   eventName = "EXPI-Day 2026",
   eventDate = "March 8-9, 2024",
-  isPostEvent = false 
+  isPostEvent = true 
 }: SharePageProps) {
   const [formData, setFormData] = useState({
   username: '',
