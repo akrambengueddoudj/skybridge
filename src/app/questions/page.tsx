@@ -53,128 +53,128 @@ export default function SharePage({
 
   const config = isPostEvent ? pageConfig.post : pageConfig.pre
 
-  const questions = [
+const questions = [
   {
     id: 1,
-    question: "What's your current understanding of AI and its impact on industries?",
-    placeholder: "Share your thoughts on how AI is changing the world...",
+    question: "What do you think is the biggest difference between university studies and professional life?",
+    placeholder: "Responsibility, teamwork, deadlines, continuous learning...",
     name: "answer1"
   },
   {
     id: 2,
-    question: "Which AI skill or concept do you most want to learn about today?",
-    placeholder: "Machine learning, prompt engineering, ethics, applications...",
+    question: "What do you think is the biggest challenge engineering graduates face when starting their first job?",
+    placeholder: "Adapting to the workplace, applying theory, communication...",
     name: "answer2"
   },
   {
     id: 3,
-    question: "What's the biggest challenge you think companies face when adopting AI?",
-    placeholder: "Share your perspective on implementation challenges...",
+    question: "Which skill do you believe is most important for a young engineer entering the workforce?",
+    placeholder: "Technical knowledge, problem solving, communication, adaptability...",
     name: "answer3"
   },
   {
     id: 4,
-    question: "If you could create an AI solution for any problem, what would it be?",
-    placeholder: "Dream big - what would you build?",
+    question: "How many of you think modern industrial systems rely more on automated control systems than on human monitoring?",
+    placeholder: "Automation vs human supervision in modern industry...",
     name: "answer4"
   },
   {
     id: 5,
-    question: "What does 'being AI-ready' mean to you in your future career?",
-    placeholder: "How do you see AI shaping your professional journey?",
+    question: "What do you think is the biggest risk in large industrial infrastructures like oil or gas plants?",
+    placeholder: "Mechanical failure, human error, monitoring systems, environment...",
     name: "answer5"
   },
   {
     id: 6,
-    question: "How do you think AI will transform your specific field of study?",
-    placeholder: "Consider your major or career path...",
+    question: "Which stage do you think is hardest for engineers when developing a new idea into reality?",
+    placeholder: "Design, prototyping, testing, manufacturing...",
     name: "answer6"
   },
   {
     id: 7,
-    question: "What ethical concerns about AI are most important to you?",
-    placeholder: "Privacy, bias, job displacement, regulation...",
+    question: "What do you think is the most important factor for turning an idea into a successful project?",
+    placeholder: "Technical design, team motivation, funding, user needs...",
     name: "answer7"
   },
   {
     id: 8,
-    question: "Which company or product do you think is leading in AI innovation?",
-    placeholder: "And why do they stand out to you?",
+    question: "If you had to design a startup, what problem would you try to solve?",
+    placeholder: "Energy, AI technology, industrial problems, daily life issues...",
     name: "answer8"
   },
   {
     id: 9,
-    question: "What AI tool or application do you use most frequently?",
-    placeholder: "ChatGPT, Copilot, Midjourney, etc.",
+    question: "When engineers develop a new product, what do you think is the biggest challenge during the prototyping phase?",
+    placeholder: "Budget, materials, testing iterations, scalability...",
     name: "answer9"
   },
   {
     id: 10,
-    question: "How do you stay updated on AI developments?",
-    placeholder: "Newsletters, podcasts, courses, LinkedIn...",
+    question: "When engineers create a new product, what do you think is the hardest part?",
+    placeholder: "Idea generation, system design, prototyping, market launch...",
     name: "answer10"
   },
   {
     id: 11,
-    question: "What AI concept do you find most difficult to understand?",
-    placeholder: "Be honest - we're all learning!",
+    question: "Have you heard about radiative cooling for photovoltaic panels, and how do you think it improves efficiency?",
+    placeholder: "Temperature reduction, heat reflection, improved materials...",
     name: "answer11"
   },
   {
     id: 12,
-    question: "How do you think AI will impact job markets in the next 5 years?",
-    placeholder: "New roles, displaced jobs, transformed industries...",
+    question: "What practical challenges might engineers face when implementing radiative cooling in solar panels?",
+    placeholder: "Material limits, cost, climate conditions, system integration...",
     name: "answer12"
   },
   {
     id: 13,
-    question: "What would you ask an AI researcher if you had 5 minutes with them?",
-    placeholder: "Your burning questions about AI...",
+    question: "What do you think is the biggest challenge for renewable energy today?",
+    placeholder: "Energy storage, efficiency, cost, grid integration...",
     name: "answer13"
   },
   {
     id: 14,
-    question: "How can students best prepare for an AI-driven future?",
-    placeholder: "Skills to learn, habits to build...",
+    question: "Do you think solar panels work better in very hot climates or moderate climates?",
+    placeholder: "Hot climates, moderate climates, technology dependent...",
     name: "answer14"
   },
   {
     id: 15,
-    question: "What AI project would you like to build or contribute to?",
-    placeholder: "Describe your ideal project...",
+    question: "What advice do you think experienced graduates would give to their younger student selves?",
+    placeholder: "Build projects, gain experience, networking, research...",
     name: "answer15"
   },
   {
     id: 16,
-    question: "How do you think AI will change education and learning?",
-    placeholder: "Personalized learning, tutoring, assessment...",
+    question: "What do you think is the biggest challenge when moving from mathematical theory to real engineering systems?",
+    placeholder: "Real-world conditions, constraints, system integration, validation...",
     name: "answer16"
   },
   {
     id: 17,
-    question: "What's the most exciting AI breakthrough you've heard about recently?",
-    placeholder: "Share something that amazed you...",
+    question: "When engineers design complex systems, what factor do you think is most often underestimated?",
+    placeholder: "Human factors, system integration, maintenance, communication...",
     name: "answer17"
   },
   {
     id: 18,
-    question: "How do you think AI can help solve global challenges?",
-    placeholder: "Climate change, healthcare, poverty, etc.",
+    question: "Modern engineering projects involve technology, people, and organization. Which do you think has the greatest impact on success?",
+    placeholder: "Technology, teamwork, management, balance of all...",
     name: "answer18"
   },
   {
     id: 19,
-    question: "What AI-related topic would you like to see a workshop on?",
-    placeholder: "Help us plan future events!",
+    question: "Agile methods are becoming common in engineering projects. What do you think is their main advantage?",
+    placeholder: "Faster cycles, adaptability, collaboration, risk reduction...",
     name: "answer19"
   },
   {
     id: 20,
-    question: "Where do you see yourself in relation to AI 5 years from now?",
-    placeholder: "User, builder, researcher, leader, etc.",
+    question: "How do you think Artificial Intelligence will most impact engineering in the future?",
+    placeholder: "Design assistance, automation, data-driven decisions, intelligent systems...",
     name: "answer20"
   }
-]
+];
 
   const validateForm = () => {
   if (!formData.username.trim()) {
